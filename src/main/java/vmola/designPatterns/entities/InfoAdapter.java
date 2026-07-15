@@ -1,6 +1,8 @@
 package vmola.designPatterns.entities;
 
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 
 public class InfoAdapter implements DataSource {
     private final Info info;
@@ -20,16 +22,16 @@ public class InfoAdapter implements DataSource {
         if (info == null || info.getDataDiNascita() == null) {
             return 0;
         }
-        Calendar oggi = Calendar.getInstance();
-        Calendar nascita = Calendar.getInstance();
-        nascita.setTime(info.getDataDiNascita());
 
-        int eta = oggi.get(Calendar.YEAR) - nascita.get(Calendar.YEAR);
+        LocalDate dataNascita = info.getDataDiNascita()
+                .toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
 
-        if (oggi.get(Calendar.DAY_OF_YEAR) < nascita.get(Calendar.DAY_OF_YEAR)) {
-            eta--;
-        }
-        return eta;
+        LocalDate oggi = LocalDate.now();
+
+        return Period.between(dataNascita, oggi)
+                .getYears();
     }
 }
 
