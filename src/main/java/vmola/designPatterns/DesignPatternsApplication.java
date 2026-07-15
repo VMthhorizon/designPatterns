@@ -17,10 +17,10 @@ public class DesignPatternsApplication {
 
     public static void main(String[] args) {
         Info info = new Info();
-        info.setNome("Mario");
-        info.setCognome("Rossi");
+        info.setNome("luca");
+        info.setCognome("frizzi");
 
-        LocalDate dataNascita = LocalDate.of(1996, 7, 15);
+        LocalDate dataNascita = LocalDate.of(2002, 10, 21);
 
         Date dataDate = Date.from(dataNascita.atStartOfDay(ZoneId.systemDefault())
                 .toInstant());
