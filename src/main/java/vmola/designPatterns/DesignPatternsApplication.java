@@ -14,11 +14,11 @@ public class DesignPatternsApplication {
 
     public static void main(String[] args) {
         Info info = new Info();
-        info.setNome("Mario");
-        info.setCognome("Rossi");
+        info.setNome("luca");
+        info.setCognome("ferri");
 
         Calendar cal = Calendar.getInstance();
-        cal.set(1996, Calendar.JULY, 15);
+        cal.set(2001, Calendar.AUGUST, 20);
         info.setDataDiNascita(cal.getTime());
 
         DataSource adapter = new InfoAdapter(info);
